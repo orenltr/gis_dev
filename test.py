@@ -13,8 +13,10 @@ data.head()
 
 data['geometry'] = data.index
 
-for index, row in data.iterrows() :
-    row['geometry'] = Point(row['lat'], row['lon'])
+# for index, row in data.iterrows() :
+#     row['geometry'] = Point(row['lat'], row['lon'])
 
-print(data)
+print(data.shape)
+print(data.info)
+data.lat
 
