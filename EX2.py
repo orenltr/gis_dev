@@ -6,11 +6,15 @@ from numpy.linalg import norm
 sale_price = np.array([6625,3936.272,8000,3192.84,10350])
 land_square_feet = np.array([1633,2272,2369,1750,3717])
 
+# part 1
+
 # scatter plot
 plt.plot(land_square_feet,sale_price,'.r')
 plt.xlabel('land square feet')
 plt.ylabel('sale price')
 plt.show()
+
+# part 2
 
 # h functions matrix
 h_mat_1 = np.array([[0,1],[1,0],[1000,1]]).T
@@ -23,17 +27,18 @@ mat1 = np.hstack([np.ones([land_square_feet.shape[0],1]),land_square_feet.T[:,np
 h_x_1 = np.dot(mat1,h_mat_1)
 
 temp = np.dot(sale_price[:,np.newaxis],np.ones([1,h_x_1.shape[1]]))
-cost_mat = 1/(2*exp_mat.shape[0])*(sum((h_x_1-temp)**2))
+cost_mat_1 = (1/(2*exp_mat.shape[0]))*(sum((h_x_1-temp)**2))
 
-#
+# part 3
 land_square_feet_2 = np.array([1000,2000,3000])
 mat1 = np.hstack([np.ones([land_square_feet_2.shape[0],1]),land_square_feet_2.T[:,np.newaxis]])
 h_x_2 = np.dot(mat1,h_mat_1)
 
-#
+# part 4
+
+# h functions matrix
 theta1 = np.arange(1,6)
 theta0 = np.zeros([5])
-
 h_mat_3 = np.vstack([theta0,theta1])
 
 # cost function
@@ -41,4 +46,12 @@ mat1 = np.hstack([np.ones([land_square_feet.shape[0],1]),land_square_feet.T[:,np
 h_x_3 = np.dot(mat1,h_mat_3)
 
 temp = np.dot(sale_price[:,np.newaxis],np.ones([1,h_x_3.shape[1]]))
-cost_mat = 1/(2*exp_mat.shape[0])*(sum((h_x_3-temp)**2))
+cost_mat_2 = (1/(2*exp_mat.shape[0]))*(sum((h_x_3-temp)**2))
+
+# scatter plot
+plt.plot(theta1,cost_mat_2,'r')
+plt.xlabel('theta_1')
+plt.ylabel('cost function')
+plt.show()
+
+print('optimal parameter is theta_1= ',min(cost_mat_2))
