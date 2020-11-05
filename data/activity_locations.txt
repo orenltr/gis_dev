@@ -1,0 +1,3 @@
+id;addr
+0;Arlozorov 64, Haifa, Israel
+1;Hanadiv 7, Haifa, Israel
